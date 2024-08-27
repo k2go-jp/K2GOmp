@@ -1,5 +1,5 @@
 /******************************************************************************/
-/* k2go STARSmultiPanel                                                       */
+/* k2go multiPanel                                                            */
 /******************************************************************************/
 var $Env =
 {
@@ -8,21 +8,27 @@ var $Env =
   {
     app01 :
     {
-      title    : "app01",
-      type     : "standard",
-      url      : "/path/to/app/index.html",
-      layout   : { top:0, left:0, width:0.5, height:1 },
-      display  : true,
-      waitTime : 0
+      title         : "app01",
+      type          : "standard",
+      url           : "/path/to/app/index.html",
+      layout        : { top:0, left:0, width:0.5, height:1 },
+      display       : true,
+      zIndex        : 0,
+      waitTime      : 0,
+      syncBtnHidden : true,
+      syncLock      : true
     },
     app02 :
     {
-      title    : "app02",
-      type     : "standard",
-      url      : "/path/to/app/index.html",
-      layout   : { top:0, left:0.5, width:0.5, height:1 },
-      display  : true,
-      waitTime : 0
+      title         : "app01",
+      type          : "standard",
+      url           : "/path/to/app/index.html",
+      layout        : { top:0, left:0.5, width:0.5, height:1 },
+      display       : true,
+      zIndex        : 0,
+      waitTime      : 0,
+      syncBtnHidden : true,
+      syncLock      : true
     }
   }
 };

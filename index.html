@@ -2,26 +2,40 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>STARS Multi Panel</title>
+  <title>K2GO Multi Panel</title>
   <link   type="text/css" href="css/index.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
   <script type="text/javascript" src="js/env.js"></script>
   <script type="text/javascript" src="js/k2go-stars-multi-panel.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 
+  <div id="lockWindow"></div>
+
   <header>
     <div class="logo">STARS<span>Multi Panel</span></div>
     <div class="btn-box">
       <ul>
+        <li id="btn-sync"><a>Auto Sync</a></li>
         <li id="btn-add"><a></a></li>
         <li id="btn-init"><a></a></li>
+        <li id="btn-url"><a></a></li>
         <li id="btn-reload"><a></a></li>
       </ul>
     </div>
   </header>
 
   <main>
+    <div id ="viewUrl-wrapper">
+      <div id="viewUrl-window">
+        <div id="viewUrl-window-title">ViewURL</div>
+        <div id="viewUrl-window-body">
+          <input type="text" id="viewUrl-input" />
+          <div id="copy-btn"></div>
+        </div>
+      </div>
+    </div>
     <div id="lock"></div>
     <div id="add-app-wrapper">
 

@@ -1,5 +1,6 @@
 /******************************************************************************/
-/* K2goSTARSmultiPanel Class                                                  */
+/* K2go multiPanel Class                                                      */
+/* version : 2.4.0                                                            */
 /******************************************************************************/
 class K2goSTARSmultiPanel
 {
@@ -16,9 +17,9 @@ class K2goSTARSmultiPanel
 
       objElement.innerHTML =
       `
-        <div id="${pApp}" class="window">
+        <div id="${pApp}" class="window${objApp.syncLock ? ' lock2' : ''}" style="z-index:${objApp.zIndex}">
           <div class="header">
-            <button type="button" class="sync">sync</button>
+            <button type="button" class="sync${objApp.syncBtnHidden ? ' hidden' : ''}">sync</button>
             <div class="title">${objApp.title}</div>
             <button type="button" class="close"></button>
           </div>
@@ -68,6 +69,30 @@ class K2goSTARSmultiPanel
     }
   }
 /******************************************************************************/
+/* getAppPosition                                                             */
+/******************************************************************************/
+static getAppPosition(pApp)
+{
+  try
+  {
+    const objPosition     = {};
+    const appElement      = document.querySelector(`#${pApp}`);
+    const intHeaderHeight = document.querySelector("header").offsetHeight;
+
+    objPosition.left   =  parseFloat(appElement.style.left  ) /  window.innerWidth;
+    objPosition.top    =  parseFloat(appElement.style.top   ) / (window.innerHeight - intHeaderHeight);
+    objPosition.width  = (parseFloat(appElement.style.width ) +  document.querySelector(".window > .right").offsetWidth) / window.innerWidth;
+    objPosition.height =  parseFloat(appElement.style.height) / (window.innerHeight - intHeaderHeight);
+
+    return objPosition;
+  }
+  catch(e)
+  {
+    K2goSTARSmultiPanel.putLog("getAppPosition Error " + e.toString());
+    return {};
+  }
+}
+/******************************************************************************/
 /* foregroundApp                                                              */
 /******************************************************************************/
   static foregroundApp(pApp)
@@ -87,7 +112,8 @@ class K2goSTARSmultiPanel
         }
       });
 
-      document.querySelector(`#${pApp}`).style.zIndex = intMaxZindex + 1;
+      $Env.apps[pApp].zIndex                          = intMaxZindex + 1;
+      document.querySelector(`#${pApp}`).style.zIndex = $Env.apps[pApp].zIndex;
     }
     catch(e)
     {
@@ -912,8 +938,8 @@ class K2goSTARSmultiPanel
 /******************************************************************************/
   static formatDate(pDate, pFormatString, pTimeZone)
   {
-    var objDate   = new Date(pDate.getTime());
-    var strResult = pFormatString;
+    let objDate   = new Date(pDate.getTime());
+    let strResult = pFormatString;
 
     if (typeof pTimeZone === "string")
     {
