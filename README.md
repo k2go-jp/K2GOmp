@@ -32,7 +32,8 @@ var $Env =
       display  : true,
       waitTime : 0,
       zIndex   : 0,
-      syncBtnHidden : true
+      syncBtnHidden : true,
+      syncLock      : false
     }
   }
 };

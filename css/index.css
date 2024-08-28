@@ -219,7 +219,7 @@ header {
   background-size: 24px 24px;
 }
 
-.window.lock, .window.lock2 {
+.window.lock iframe, .window.lock2 iframe {
   pointer-events: none;
 }
 
@@ -245,10 +245,6 @@ header {
   display: block;
 }
 
-.window.lock2 .lock {
-  display: block;
-}
-
 .loader {
   display: block;
   position: absolute;
@@ -269,14 +265,6 @@ header {
   top: 12px;
   left: 40px;
   font-size: 1.2rem;
-}
-
-.window.lock2 .loader {
-  display: none;
-}
-
-.window.lock2 span {
-  display: none;
 }
 
 @keyframes l20-1{
